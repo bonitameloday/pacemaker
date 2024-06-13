@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>나의 소개</title>
+        <style>
+            h3{
+                color: blue;
+                text-align: center;
+            }
+
+            hr{
+                height: 5px;
+                border:  solid grey;
+                background-color: grey;
+            }
+
+            body{
+                background-color: rgb(154, 141, 224);
+                color: green;
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+
+            span{
+                color: red;
+                font-size: 20px;
+            }
+        </style>
+
+        <script>
+            function insert(){
+                var div = document.getElementById("img");
+                div.innerHTML="<img src='/images/spongebob.png' height= 200px weight= 200px>";
+            }
+
+            function hide(){
+                var div = document.getElementById("img");
+                div.innerHTML=""
+            }
+        </script>
+    </head>
+
+    <body>
+        <h3 onmouseover="insert()" onmouseout="hide()">스폰지밥</h3>
+        <hr>
+        <div id="img"></div>
+        <p>
+            저는 대한민국에서 태어나서 컴퓨터 공학을 전공하는 학생입니다.
+            제가 제일 좋아하는 과목은 <span>웹 프로그래밍</span>이고, 그 중에서도 <span>자바스크립트</span>를 제일 잘합니다.
+        </p>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+html, body{
+    
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+header{
+    height: 10%;
+    width: 100%;
+    background-color: yellow;
+}
+
+form{
+    height: 85%;
+    width: 100%;
+    background-color: lightpink;
+    margin: 10px 10px 10px 10px;
+}
+
+footer{
+    height: 5%;
+    width: 100%;
+    background-color: plum;
+    display:flex;
+}
+
+header h1{
+    text-align: center;
+}

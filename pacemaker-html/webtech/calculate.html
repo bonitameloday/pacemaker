@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 만들기</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .calculator-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        h3 {
+            margin: 0;
+            padding: 0;
+        }
+        hr {
+            width: 100%;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+        .display {
+            width: calc(100% - 22px);
+            height: 25px;
+            margin-bottom: 0px;
+            padding: 10px;
+            font-size: 15px;
+            text-align: left;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            background-color: #fff;
+            box-sizing: border-box;
+            cursor: text;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(5, 25px);
+            grid-gap: 5px; /* 그리드 아이템 사이의 간격 */
+            padding: 10px;
+        }
+        .button {
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid rgb(83, 83, 83);
+            border-radius: 2px;
+            background-color: #c0c0c0;
+            color: rgb(0, 0, 0);
+            transition: background-color 0.3s;
+            width: 70px; 
+            height: 25px;
+            line-height: 25px; /* 버튼의 높이와 동일하게 설정 */
+            text-align: center;
+            padding: 0;
+        }
+        .button.operator {
+            background-color: #c0c0c0;
+        }
+        .button.operator:hover {
+            background-color: #c0c0c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h3>계산기 만들기</h3>
+        <hr>
+        <div class="calculator">
+            <input type="text" class="display" id="display" value="0" onclick="this.focus()">
+            <div class="buttons">
+                <button class="button" onclick="clearLast()">BACK</button>
+                <button class="button" onclick="clearAll()">CE</button>
+                <button class="button" onclick="clearAll()">C</button>
+                <button class="button operator" onclick="calculate()">=</button>
+                <button class="button" onclick="appendToDisplay('7')">7</button>
+                <button class="button" onclick="appendToDisplay('8')">8</button>
+                <button class="button" onclick="appendToDisplay('9')">9</button>
+                <button class="button operator" onclick="appendToDisplay('/')">/</button>
+                <button class="button" onclick="appendToDisplay('4')">4</button>
+                <button class="button" onclick="appendToDisplay('5')">5</button>
+                <button class="button" onclick="appendToDisplay('6')">6</button>
+                <button class="button operator" onclick="appendToDisplay('*')">*</button>
+                <button class="button" onclick="appendToDisplay('1')">1</button>
+                <button class="button" onclick="appendToDisplay('2')">2</button>
+                <button class="button" onclick="appendToDisplay('3')">3</button>
+                <button class="button operator" onclick="appendToDisplay('-')">-</button>
+                <button class="button" onclick="appendToDisplay('0')">0</button>
+                <button class="button operator" onclick="appendToDisplay('+')">+</button>
+                <button class="button none">NONE</button>
+                <button class="button none">NONE</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            let display = document.getElementById('display');
+            if (display.value === '0' && value !== '.') {
+                display.value = value;
+            } else {
+                display.value += value;
+            }
+        }
+
+        function calculate() {
+            let display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                display.value = 'Error';
+            }
+        }
+
+        function clearLast() {
+            let display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+            if (display.value === '') {
+                display.value = '0';
+            }
+        }
+
+        function clearAll() {
+            let display = document.getElementById('display');
+            display.value = '0';
+        }
+    </script>
+</body>
+</html>
